@@ -153,8 +153,8 @@ void setup(){
 void loop(){
   //loadImage();
   reinitialiser();
-  fading();
-  //turnRED();
+  //fading();
+  turnRED();
 }
 
 
