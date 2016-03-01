@@ -24,7 +24,7 @@
 #define DATAPIN_5 14
 
 //Sortie bluetooth Serial
-#define BLUETOOTH Serial
+#define BLUETOOTH Serial1
 // tableau des couleurs des leds
 CRGB leds[nbGroupe][NUM_LEDS];
 
@@ -154,7 +154,7 @@ void turnOFF(){
 
 
 void setup(){
-    // on initialise la connexion serial
+  // on initialise la connexion serial
     //Serial.begin(9600);
     BLUETOOTH.begin(115200);
     BLUETOOTH.print("start");
@@ -172,8 +172,8 @@ void loop(){
   //loadImage();
   reinitialiser();
   //fading();
-  turnRED();
-  //turnOFF();
+  //turnRED();
+  turnOFF();
 }
 
 

@@ -16,7 +16,7 @@ class Shape
     int _red;
     int _green;
     int _blue;
-    int _shapeArray[30][30];
+    int _shapeArray[50][2];
     int _row;
     int _col;
 };
