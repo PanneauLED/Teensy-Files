@@ -114,6 +114,26 @@ uint16_t state = 0;
     state++;
     if (state==384){state=0;}
   }
+  
+  
+void turnRED(){
+    byte r,g ,b;
+    r = 10;
+    b = 0;
+    g = 0;
+ 
+  for(byte k=0;k<nbGroupe;k++){
+    for (int j=0; j<nbLine;j++){
+      for (int i =0;i<nLEDs;i++){
+        leds[k][j*nLEDs+i].red=r;
+        leds[k][j*nLEDs+i].green=g;
+        leds[k][j*nLEDs+i].blue=b;
+      }
+    } 
+    FastLED.show();
+  }  
+}
+
 
 void setup(){
     // on initialise la connexion serial
@@ -127,13 +147,14 @@ void setup(){
     FastLED.addLeds<LPD8806, DATAPIN_3,CLOCKPIN_3>(leds[3], NUM_LEDS);    
     FastLED.addLeds<LPD8806, DATAPIN_4,CLOCKPIN_4>(leds[4], NUM_LEDS);
     FastLED.addLeds<LPD8806, DATAPIN_5,CLOCKPIN_5>(leds[5], NUM_LEDS);
-    fading();
+    //fading();
   
 }
 void loop(){
-  loadImage();
+  //loadImage();
   reinitialiser();
-  fading();
+  //fading();
+  turnRED();
 }
 
 
