@@ -24,7 +24,7 @@
 #define DATAPIN_5 14
 
 //Sortie bluetooth Serial
-#define BLUETOOTH Serial1
+#define BLUETOOTH Serial
 // tableau des couleurs des leds
 CRGB leds[nbGroupe][NUM_LEDS];
 
@@ -73,13 +73,13 @@ void loadImage(){
 }
 
 uint16_t state = 0;
+byte r,g ,b;
 /**************************************************
  * Change la couleur des Led de manière continue  *
  * Permet de tester si elle fonctionne toute      *
  *                                                *
  **************************************************/
  void fading(){
-    byte r,g ,b;
     switch(state / 128)
   {
     case 0:
@@ -117,8 +117,26 @@ uint16_t state = 0;
   
   
 void turnRED(){
-    byte r,g ,b;
+    
     r = 10;
+    b = 0;
+    g = 0;
+ 
+  for(byte k=0;k<nbGroupe;k++){
+    for (int j=0; j<nbLine;j++){
+      for (int i =0;i<nLEDs;i++){
+        leds[k][j*nLEDs+i].red=r;
+        leds[k][j*nLEDs+i].green=g;
+        leds[k][j*nLEDs+i].blue=b;
+      }
+    } 
+    FastLED.show();
+  }  
+}
+
+void turnOFF(){
+   
+    r = 0;
     b = 0;
     g = 0;
  
@@ -155,6 +173,7 @@ void loop(){
   reinitialiser();
   //fading();
   turnRED();
+  //turnOFF();
 }
 
 
