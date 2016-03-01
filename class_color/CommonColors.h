@@ -1,6 +1,6 @@
 #include "Color.h"
 
-//定义一些常见颜色 
+//definitions of some common colors
 Color clRed(255,0,0);
 Color clGreen(0,255,0);
 Color clBlue(0,0,255);
