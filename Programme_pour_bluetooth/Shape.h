@@ -10,7 +10,7 @@ class Shape
   public:
     Shape();
     void setShapeColor(int r, int g, int b);
-    void setLocation(int row, int col);
+    void setLocation(int x, int y);
     
   private:
     int _red;
