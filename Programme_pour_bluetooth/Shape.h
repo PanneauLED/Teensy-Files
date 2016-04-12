@@ -11,12 +11,14 @@ class Shape
     Shape();
     void setShapeColor(int r, int g, int b);
     void setLocation(int x, int y);
-    
-  private:
+  protected:
     int _red;
     int _green;
     int _blue;
     int _shapeArray[50][2];
     int _row;
     int _col;
+    
+  private:
+    
 };

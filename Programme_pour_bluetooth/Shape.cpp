@@ -14,13 +14,12 @@ Shape::Shape()
   _row = 0;
   _col = 0;
    
-  // Instantiate array:
-  for (int i=0; i<100; i++){
-    for (int j=0; j<10; j++){
-      _shapeArray[i][0] = (i/10)%10;
-      _shapeArray[i][1] = j;
-    }  
-  }
+  // Instantiate array with negatives (negative = off led):
+  for (int i=0; i<50; i++){
+      _shapeArray[i][0] = -1;
+      _shapeArray[i][1] = -1;
+   } 
+  
 }
 
 

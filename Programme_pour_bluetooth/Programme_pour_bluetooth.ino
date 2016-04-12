@@ -1,4 +1,8 @@
+#include "Arduino.h"
 #include <FastLED.h>
+#include "Panel.h"
+
+#include "LetterA.h"
 // nb de ligne par groupe
 #define nbLine 4
 // nb de led par ligne
@@ -27,6 +31,9 @@
 #define BLUETOOTH Serial1
 // tableau des couleurs des leds
 CRGB leds[nbGroupe][NUM_LEDS];
+
+// Instantiate panel
+Panel ledPanel;
 
 // numéro de la Led 
 uint16_t i=0;
@@ -166,14 +173,24 @@ void setup(){
     FastLED.addLeds<LPD8806, DATAPIN_4,CLOCKPIN_4>(leds[4], NUM_LEDS);
     FastLED.addLeds<LPD8806, DATAPIN_5,CLOCKPIN_5>(leds[5], NUM_LEDS);
     //fading();
+    ledPanel.allOff(leds);
+    LetterA _a(ledPanel, leds);
+    
+    
+//    leds[0][70].red=20;
+//    leds[0][70].green=20;
+//    leds[0][70].blue=20;
+//    FastLED.show();
   
 }
 void loop(){
   //loadImage();
   reinitialiser();
+  //ledPanel.ledOn(0, 0, leds);
+  
   //fading();
   //turnRED();
-  turnOFF();
+  //turnOFF();
 }
 
 
