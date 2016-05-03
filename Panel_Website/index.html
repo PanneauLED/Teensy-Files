@@ -1,0 +1,139 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>LED Panel Controller</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Exo:500' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href='indexstyle.css' > 
+</head>
+
+<body>
+    <div id="nav_bg"></div>
+    <table id="nav">
+        <td id="website_title">
+            LED Panel Controller
+        </td>
+        <td id="credit">
+            <h4>a project by Panneau LED Group of ECP</h4><br>
+            <h4>contact nicholas.anthony@student.ecp.fr for questions, problems, or info</h4>
+        </td>
+    </table>
+
+    <div id="control_panel">
+        <table id="input">
+            <td>
+                Home Team Score: <input type="number" id="inputHomeScore" value="0"><br>
+                <button id="homeSubmit">Change Home Team Score</button><br>
+            </td>
+            <td>
+                Visitor Team Score:  <input type="number" id="inputVisitorScore" value="0"><br>
+                <button id="visitorSubmit">Change Visitor Team Score</button><br>
+            </td>
+            <td>
+                Sec: <input type="number" id="inputSec" value="00"><br>
+                Min: <input type="number" id="inputMin" value="00"><br>
+                <button id="timeSubmit">Change Time</button><br>
+            </td>
+            <td>
+                <button id="startButton">Start Time</button><br>
+                <button id="stopButton">Stop Time</button>
+            </td>
+        </table>
+        <table id="panel">
+            <tr>
+                <td>TIME:</td>
+                <td><div id="minutes" class="panel_style">00</div>:<div id="seconds" class="panel_style">00</div></td>
+            </tr>
+            <tr>
+                <td>HOME:</td>
+                <td>VISITOR:</td>
+            </tr>
+            <tr>
+                <td><div id="homeScore" class="panel_style">0</div></td>
+                <td><div id="visitorScore" class="panel_style">0</div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <script type="text/javascript">
+        
+        // Changes home team score:
+        document.getElementById("homeSubmit").onclick = function() {
+            document.getElementById("homeScore").innerHTML = document.getElementById("inputHomeScore").value;
+        }
+        // Changes visitor team score:
+        document.getElementById("visitorSubmit").onclick = function() {
+            document.getElementById("visitorScore").innerHTML = document.getElementById("inputVisitorScore").value;
+        }
+        // Changes time
+        document.getElementById("timeSubmit").onclick = function() {
+            document.getElementById("minutes").innerHTML = document.getElementById("inputMin").value;
+            document.getElementById("seconds").innerHTML = document.getElementById("inputSec").value;
+
+            var secString = document.getElementById("seconds").innerHTML;
+            var minString = document.getElementById("minutes").innerHTML;
+            var seconds = parseInt(secString);
+            var minutes = parseInt(minString);
+            addZero(seconds, minutes);
+        }
+        // Regulates start and stop of timer
+        var startCheck = false;
+        document.getElementById("startButton").onclick = function() {
+            startCheck = true;
+        }
+        document.getElementById("stopButton").onclick = function() {
+            startCheck = false;
+        }
+
+        // Changes "1:1" to "01:01" on the displayed time
+        function addZero(seconds, minutes){
+            if (seconds<10){
+                var secString = "0"
+                secString += seconds.toString();
+                document.getElementById("seconds").innerHTML = secString;
+            }
+            else{
+                document.getElementById("seconds").innerHTML = seconds;
+            }
+            if (minutes<10){
+                var minString = "0"
+                minString += minutes.toString();
+                document.getElementById("minutes").innerHTML = minString;
+            }
+            else{
+                document.getElementById("minutes").innerHTML = minutes;
+            }
+            return;
+        }
+
+        // this function handles the timer 
+        setInterval(function() {
+            if(startCheck){
+                var secString = document.getElementById("seconds").innerHTML;
+                var minString = document.getElementById("minutes").innerHTML;
+                var seconds = parseInt(secString);
+                var minutes = parseInt(minString);
+                //If there are is no time left:
+                if(seconds <= 0 && minutes <= 0){
+                    startCheck = false; 
+                    return;
+                }
+                // If seconds need to be reset to 59
+                if(seconds == 0){
+                    seconds = 59;
+                    minutes -= 1;
+                }
+                else{
+                    seconds -= 1;
+                }
+
+                addZero(seconds, minutes);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
