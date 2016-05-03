@@ -1,0 +1,7 @@
+Color	KEYWORD1
+setRed	KEYWORD2
+getRed	KEYWORD3
+setGreen	KEYWORD4
+getGreen	KEYWORD5
+setBlue	KEYWORD6
+getBlue	KEYWORD7
