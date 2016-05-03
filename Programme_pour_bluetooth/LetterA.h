@@ -8,7 +8,7 @@
 class LetterA : public Shape {
   public:
       LetterA(CRGB ledPanel[6][256], Panel connection);
-      void place(CRGB ledPanel[6][256]);
+      void place(CRGB ledPanel[6][256], Panel connection);
 };
  
 #endif
