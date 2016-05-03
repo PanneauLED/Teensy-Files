@@ -1,6 +1,6 @@
 #include "Arduino.h"
 #include <FastLED.h>
-#include "Panel.h"
+//#include "Panel.h"
 
 #include "LetterA.h"
 // nb de ligne par groupe
@@ -174,7 +174,9 @@ void setup(){
     FastLED.addLeds<LPD8806, DATAPIN_5,CLOCKPIN_5>(leds[5], NUM_LEDS);
     //fading();
     ledPanel.allOff(leds);
-    LetterA _a(ledPanel, leds);
+    LetterA _a(leds, ledPanel);
+    _a.place(leds, ledPanel);
+    
     
     
 //    leds[0][70].red=20;

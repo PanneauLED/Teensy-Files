@@ -46,7 +46,7 @@ void Panel::ledOn(int x, int y, CRGB ledPanel[6][256]){
  
   _r = 20;
   _g = 20;
-  _b = 20;
+  _b = 40;
   ledPanel[group][x_actual].red=_r;
   ledPanel[group][x_actual].green=_g;
   ledPanel[group][x_actual].blue=_b;
