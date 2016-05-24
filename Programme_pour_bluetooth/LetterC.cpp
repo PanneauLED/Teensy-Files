@@ -1,6 +1,6 @@
 #include "Arduino.h"
 #include <FastLED.h>
-#include "LetterCc.h"
+#include "LetterC.h"
 
 
 

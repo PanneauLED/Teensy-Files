@@ -65,7 +65,7 @@ LetterK::LetterK(CRGB ledPanel[6][256], Panel connection)
   
 }
 
-void LetterKA::place(CRGB ledPanel[6][256]){
+void LetterK::place(CRGB ledPanel[6][256]){
   // Turn on LED's
  
   int i=0;

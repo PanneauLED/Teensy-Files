@@ -13,7 +13,6 @@ LetterA::LetterA(CRGB ledPanel[6][256], Panel connection)
   _row = 0;
   _col = 0;
   _shapeArray[0][0] = 0;
-<<<<<<< Updated upstream
   _shapeArray[0][1] = 2;
   
   _shapeArray[1][0] = 0;
@@ -50,7 +49,6 @@ LetterA::LetterA(CRGB ledPanel[6][256], Panel connection)
   _shapeArray[11][1] = 4;
    
    
-=======
 _shapeArray[0][1] = 0;
 _shapeArray[1][0] = 0;
 _shapeArray[1][1] = 1;
@@ -251,7 +249,6 @@ _shapeArray[66][1] = 13;
 
 void LetterA::place(CRGB ledPanel[6][256], Panel connection){
   
->>>>>>> Stashed changes
   // Turn on LED's
  
   int i=0;

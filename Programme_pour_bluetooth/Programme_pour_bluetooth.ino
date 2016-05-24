@@ -162,8 +162,9 @@ void turnOFF(){
 
 void setup(){
   // on initialise la connexion serial
-    //Serial.begin(9600);
-    BLUETOOTH.begin(115200);
+    Serial.begin(9600);
+    BLUETOOTH.begin(9600);
+    delay(200);
     BLUETOOTH.print("start");
     // on ajoute tout les rubans de led un par un
     FastLED.addLeds<LPD8806, DATAPIN_0,CLOCKPIN_0>(leds[0], NUM_LEDS);
@@ -187,12 +188,22 @@ void setup(){
 }
 void loop(){
   //loadImage();
-  reinitialiser();
+  //reinitialiser();
   //ledPanel.ledOn(0, 0, leds);
   
   //fading();
   //turnRED();
   //turnOFF();
+  
+  /* send everything received from the hardware uart to usb serial & vv */
+  if (Serial.available() > 0) {
+    char ch = Serial.read();
+    BLUETOOTH.print(ch);
+  }
+  if (BLUETOOTH.available() > 0) {
+    char ch = BLUETOOTH.read();
+    Serial.print(ch);
+  }
 }
 
 
