@@ -62,6 +62,14 @@ serial.on('found', function(address, name) {
 serial.inquire();
 
 
+function getValue(){
+	document.getElementById("homeSubmit").onclick = function() {
+        document.getElementById("homeScore").innerHTML = document.getElementById("inputHomeScore").value;
+    }
+
+    
+}
+
 
 // List all serial ports connected to computer
 function listSerialPorts(){
