@@ -27,8 +27,16 @@
 #define DATAPIN_4 16
 #define DATAPIN_5 14
 
+// Bluetooth Connection:
+#include <SoftwareSerial.h>
+SoftwareSerial BLUETOOTH(0, 1); 
+// creates a "virtual" serial port/UART
+// connect BT module TX to D0
+// connect BT module RX to D1
+// connect BT Vcc to 3.3V, GND to GND
+
 //Sortie bluetooth Serial
-#define BLUETOOTH Serial1
+//#define BLUETOOTH Serial1
 // tableau des couleurs des leds
 CRGB leds[nbGroupe][NUM_LEDS];
 
@@ -165,7 +173,7 @@ void setup(){
     Serial.begin(9600);
     BLUETOOTH.begin(9600);
     delay(200);
-    BLUETOOTH.print("start");
+    BLUETOOTH.println("Hello from Arduino");
     // on ajoute tout les rubans de led un par un
     FastLED.addLeds<LPD8806, DATAPIN_0,CLOCKPIN_0>(leds[0], NUM_LEDS);
     FastLED.addLeds<LPD8806, DATAPIN_1,CLOCKPIN_1>(leds[1], NUM_LEDS);    
@@ -186,6 +194,8 @@ void setup(){
 //    FastLED.show();
   
 }
+
+char buffer; // stores incoming character from other device
 void loop(){
   //loadImage();
   //reinitialiser();
@@ -194,15 +204,22 @@ void loop(){
   //fading();
   //turnRED();
   //turnOFF();
-  
-  /* send everything received from the hardware uart to usb serial & vv */
-  if (Serial.available() > 0) {
-    char ch = Serial.read();
-    BLUETOOTH.print(ch);
-  }
-  if (BLUETOOTH.available() > 0) {
-    char ch = BLUETOOTH.read();
-    Serial.print(ch);
+   // if text arrived in from BT serial:
+  if (BLUETOOTH.available()){
+      buffer=(BLUETOOTH.read());
+      if (buffer=='a'){
+        fading();
+        BLUETOOTH.println("fading");
+      }
+      if (buffer=='b'){
+        turnRED();
+        BLUETOOTH.println("turned red");
+      }
+      if (buffer=='c'){
+        turnOFF();
+        BLUETOOTH.println("turned off");
+      }   
+    // you can add more "if" statements with other characters to add more commands
   }
 }
 
