@@ -1,11 +1,11 @@
 /* Server File
- * Created by Nick Anthony on 12/04/2016
+ * Created by Nick Anthony on 28/04/2016
  * Runs with Node.js
  */
 
 var name = process.argv[2];
 console.log("BlueTooth Program Started");
-
+var express = require('express');
 
 var BTSP = require('bluetooth-serial-port');
 var serial = new BTSP.BluetoothSerialPort();
@@ -43,14 +43,17 @@ serial.on('found', function(address, name) {
 	            		serial.write(buffer, function(err, bytesWritten) {
 			                if (err) console.log(err);
 			            });
-	            	}
-	                
-	                
+	            	} 
 	            });
 	 
 	            serial.on('data', function(data) {
 	                console.log('Received: ' + data);
 	            });
+
+	            // Changes home team score:
+		        document.getElementById("homeSubmit").onclick = function() {
+		            document.getElementById("homeScore").innerHTML = document.getElementById("inputHomeScore").value;
+		        }
 	        }, function () {
 	            console.log('cannot connect');
 	        }); //End bracket for serial.connect()
@@ -67,7 +70,7 @@ function getValue(){
         document.getElementById("homeScore").innerHTML = document.getElementById("inputHomeScore").value;
     }
 
-    
+
 }
 
 

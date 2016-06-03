@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -10,7 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Exo:500' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' type='text/css' href='indexstyle.css' >
-    <link href="hover.css" rel="stylesheet" type="text/css"/> 
+    <link href="hover.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -19,15 +18,15 @@
         <div id="website_title">
             LED Panel
         </div>
-        </br>
+
         <div id="credit">
-            <h4>a project by Panneau LED Group of ECP</h4><br>
-            <h4>contact nicholas.anthony@student.ecp.fr for questions, problems, or info</h4>
+            <h4>created by Panneau LED Group of ECP:</h4><br>
+            <h4>Nicholas Anthony, Christropher Reinartz, <br> and Xingtong Long</h4>
         </div>
     </div>
 
     <div id="control_panel">
-        <table id="input" cellspacing = "10";>
+        <table id="input" cellspacing = "10">
             <tr>
                 <td>Home Team Score: </td> 
                 <td><input type="number" id="inputHomeScore" value="0"></td>
@@ -49,19 +48,19 @@
             <tr>
                 <td>Min: </td>
                 <td><input type="number" id="inputMin" value="00"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button id="startButton" class="hvr-float-shadow">Start Time</button></td>
-                <td>
+                <td><button id="startButton" class="hvr-float-shadow">Start Time</button>
+                
                 <button id="stopButton" class="hvr-float-shadow">Stop Time</button>
                 </td>
+            </tr>
+            <tr>
+                
             </tr>
         </table>
         <table id="panel">
             <tr>
                 <td>TIME:</td>
-                <td><div id="minutes" class="panel_style">00</div>:<div id="seconds" class="panel_style">00</div></td>
+                <td><div id="minutes" class="panel_style">05</div>:<div id="seconds" class="panel_style">00</div></td>
             </tr>
             <tr>
                 <td>HOME:</td>
@@ -72,8 +71,12 @@
                 <td><div id="visitorScore" class="panel_style">0</div></td>
             </tr>
         </table>
+
     </div>
-    
+    <button class="hvr-grow" style="position: relative; left:10px; top: 30px; " onclick="location.href='test.html';"> Back </button>
+    <div style="height:50px"></div>
+
+    <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript">
         
         // Changes home team score:
