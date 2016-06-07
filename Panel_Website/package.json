@@ -1,0 +1,23 @@
+{
+  "name": "panel_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "bluetooth-serial-port": "^1.2.6",
+    "events": "^1.1.0",
+    "express": "^4.13.4",
+    "fs": "^0.0.2",
+    "httpdispatcher": "^1.0.0",
+    "jade": "^1.11.0",
+    "serialport": "^3.1.2",
+    "socket.io": "^1.4.6",
+    "ws": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nickanthony",
+  "license": "ISC"
+}

@@ -219,6 +219,9 @@ void loop(){
         turnOFF();
         BLUETOOTH.println("turned off");
       }   
+      if (buffer=='1'){
+        Serial.println("1 received");
+      }   
     // you can add more "if" statements with other characters to add more commands
   }
 }

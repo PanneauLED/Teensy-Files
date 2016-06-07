@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+    <title>LED Panel Controller</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Exo:500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href='indexstyle.css' >
+    <link href="hover.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+    <div id="nav_bg"></div>
+    <div id="nav">
+        <div id="website_title">
+            LED Panel
+        </div>
+
+        <div id="credit">
+            <h4>created by Panneau LED Group of ECP:</h4><br>
+            <h4>Nicholas Anthony, Christropher Reinartz, <br> and Xingtong Long</h4>
+        </div>
+    </div>
+
+    <table id="input" cellspacing = "10">
+        <tr>
+            <td>
+                <button id="connectBTButton" class="hvr-grow"> Connect to Panel (Bluetooth) </button>
+            </td>
+            <td>
+                <button id="helloButton" class="hvr-grow"> Say Hello </button>
+            </td>
+        </tr>
+    </table>
+
+    <div id="control_panel">
+        <table id="input" cellspacing = "10">
+            <tr>
+                <td>Home Team Score: </td> 
+                <td><input type="number" id="inputHomeScore" value="0"></td>
+                <td><button id="homeSubmit" class="hvr-grow">Change Home Team Score</button><br>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Visitor Team Score:  </td>
+                <td><input type="number" id="inputVisitorScore" value="0"></td>
+                <td><button id="visitorSubmit" class="hvr-float-shadow">Change Visitor Team Score</button></td>
+            </tr>
+            <tr>
+                <td>Sec: </td>
+                <td><input type="number" id="inputSec" value="00"></td>
+
+                <td><button id="timeSubmit" class="hvr-float-shadow">Change Time</button></td>
+            </tr>
+            <tr>
+                <td>Min: </td>
+                <td><input type="number" id="inputMin" value="00"></td>
+                <td><button id="startButton" class="hvr-float-shadow">Start Time</button>
+                
+                <button id="stopButton" class="hvr-float-shadow">Stop Time</button>
+                </td>
+            </tr>
+            <tr>
+                
+            </tr>
+        </table>
+        <table id="panel">
+            <tr>
+                <td>TIME:</td>
+                <td><div id="minutes" class="panel_style">05</div>:<div id="seconds" class="panel_style">00</div></td>
+            </tr>
+            <tr>
+                <td>HOME:</td>
+                <td>VISITOR:</td>
+            </tr>
+            <tr>
+                <td><div id="homeScore" class="panel_style">0</div></td>
+                <td><div id="visitorScore" class="panel_style">0</div></td>
+            </tr>
+        </table>
+
+    </div>
+    <button class="hvr-grow" style="position: relative; left:10px; top: 30px; " onclick="location.href='index.html';"> Back </button>
+    <div style="height:50px"></div>
+
+    
+    <!-- <script type="text/javascript">
+        var socketio = io.connect("127.0.0.1:4000");
+        socketio.on("message_to_client", function(data) {
+            document.getElementById("sendButton").innerHTML = (data['message']);
+        });
+
+        function sendMessage() {
+            var msg = "hello";
+            socketio.emit("message_to_server", { message : msg});
+        }
+    </script> -->
+
+    <script type="text/javascript" src="server.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var socketio = io.connect("127.0.0.1:4000");
+        // Connects to Teensy via bluetooth
+        document.getElementById("connectBTButton").onclick = function() {
+            socketio.emit("connect_bluetooth");
+        }
+
+        document.getElementById("helloButton").onclick = function() {
+            socketio.emit("say_hello");
+        }
+
+        // Changes home team score:
+        document.getElementById("homeSubmit").onclick = function() {
+            document.getElementById("homeScore").innerHTML = document.getElementById("inputHomeScore").value;
+            var msg = document.getElementById("inputHomeScore").value;
+            socketio.emit("change_home_team_score", { message : msg});
+        }
+        // Changes visitor team score:
+        document.getElementById("visitorSubmit").onclick = function() {
+            document.getElementById("visitorScore").innerHTML = document.getElementById("inputVisitorScore").value;
+            var msg = document.getElementById("inputVisitorScore").value;
+            socketio.emit("change_visitor_team_score", { message : msg});
+        }
+        // Changes time
+        document.getElementById("timeSubmit").onclick = function() {
+            document.getElementById("minutes").innerHTML = document.getElementById("inputMin").value;
+            document.getElementById("seconds").innerHTML = document.getElementById("inputSec").value;
+
+            var secString = document.getElementById("seconds").innerHTML;
+            var minString = document.getElementById("minutes").innerHTML;
+            var seconds = parseInt(secString);
+            var minutes = parseInt(minString);
+            addZero(seconds, minutes);
+
+            var minString =document.getElementById("minutes").innerHTML;
+            var secString = document.getElementById("seconds").innerHTML;
+            socketio.emit("update_time", { 
+                minutes : minString,
+                seconds : secString
+
+            });
+        }
+        // Regulates start and stop of timer
+        var startCheck = false;
+        document.getElementById("startButton").onclick = function() {
+            startCheck = true;
+        }
+        document.getElementById("stopButton").onclick = function() {
+            startCheck = false;
+        }
+
+        // Changes "1:1" to "01:01" on the displayed time
+        function addZero(seconds, minutes){
+            if (seconds<10){
+                var secString = "0"
+                secString += seconds.toString();
+                document.getElementById("seconds").innerHTML = secString;
+            }
+            else{
+                document.getElementById("seconds").innerHTML = seconds;
+            }
+            if (minutes<10){
+                var minString = "0"
+                minString += minutes.toString();
+                document.getElementById("minutes").innerHTML = minString;
+            }
+            else{
+                document.getElementById("minutes").innerHTML = minutes;
+            }
+            return;
+        }
+
+        // this function handles the timer 
+        setInterval(function() {
+            if(startCheck){
+                var secString = document.getElementById("seconds").innerHTML;
+                var minString = document.getElementById("minutes").innerHTML;
+                var seconds = parseInt(secString);
+                var minutes = parseInt(minString);
+                //If there are is no time left:
+                if(seconds <= 0 && minutes <= 0){
+                    startCheck = false; 
+                    return;
+                }
+                // If seconds need to be reset to 59
+                if(seconds == 0){
+                    seconds = 59;
+                    minutes -= 1;
+                }
+                else{
+                    seconds -= 1;
+                }
+
+                addZero(seconds, minutes);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
