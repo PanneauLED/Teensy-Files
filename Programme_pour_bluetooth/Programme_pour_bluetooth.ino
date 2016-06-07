@@ -1,30 +1,31 @@
-#include <LetterA.h>
-#include <LetterB.h>
-#include <LetterC.h>
-#include <LetterD.h>
-#include <LetterE.h>
-#include <LetterF.h>
-#include <LetterG.h>
-#include <LetterH.h>
-#include <LetterI.h>
-#include <LetterJ.h>
-#include <LetterK.h>
-#include <LetterL.h>
-#include <LetterM.h>
-#include <LetterN.h>
-#include <LetterO.h>
-#include <LetterP.h>
-#include <LetterQ.h>
-#include <LetterR.h>
-#include <LetterS.h>
-#include <LetterT.h>
-#include <LetterU.h>
-#include <LetterV.h>
-#include <LetterW.h>
-#include <LetterX.h>
-#include <LetterY.h>
-#include <LetterZ.h>
-#include <Shape.h>
+//#include "Panel.h"
+#include "LetterA.h"
+//#include "LetterB.h"
+//#include <LetterC.h>
+//#include <LetterD.h>
+//#include <LetterE.h>
+//#include <LetterF.h>
+//#include <LetterG.h>
+//#include <LetterH.h>
+//#include <LetterI.h>
+//#include <LetterJ.h>
+//#include <LetterK.h>
+//#include <LetterL.h>
+//#include <LetterM.h>
+//#include <LetterN.h>
+//#include <LetterO.h>
+//#include <LetterP.h>
+//#include <LetterQ.h>
+//#include <LetterR.h>
+//#include <LetterS.h>
+//#include <LetterT.h>
+//#include <LetterU.h>
+//#include <LetterV.h>
+//#include <LetterW.h>
+//#include <LetterX.h>
+//#include <LetterY.h>
+//#include <LetterZ.h>
+//#include <Shape.h>
 
 //#include <Letter.h>
 
@@ -32,7 +33,7 @@
 
 #include "Arduino.h"
 #include <FastLED.h>
-#include "Letter/Panel.h"
+//#include "Panel.h"
 //#include <FastLED.h>
 
 //#include "LetterA.h"
@@ -216,8 +217,8 @@ void setup(){
     FastLED.addLeds<LPD8806, DATAPIN_5,CLOCKPIN_5>(leds[5], NUM_LEDS);
     //fading();
     ledPanel.allOff(leds);
-    LetterB _b(leds, ledPanel);
-    _b.place(leds, ledPanel);
+    LetterA _a(leds, ledPanel);
+    _a.place(leds, ledPanel);
   
 }
 

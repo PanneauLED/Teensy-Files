@@ -4,6 +4,7 @@
 */
 
 #include "Arduino.h"
+#include "Panel.h"
 
 class Shape
 {

@@ -3,7 +3,7 @@
  
 #include "Arduino.h"
 #include "Shape.h"
-#include "Panel.h"
+
  
 class LetterD : public Shape {
   public:

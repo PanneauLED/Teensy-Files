@@ -15,8 +15,7 @@
 #define NUM_LEDS nbLine*nLEDs
 #define totLED NUM_LEDS*nbGroupe
 
-class Panel
-{
+class Panel {
     public:
         Panel();
         virtual ~Panel();
