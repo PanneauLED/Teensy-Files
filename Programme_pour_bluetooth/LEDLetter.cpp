@@ -1,5 +1,5 @@
 #include <FastLED.h>
-#include "LetterA.h"
+#include "LEDLetter.h"
 
 LEDLetter::LEDLetter(CRGB ledPanel[6][256], Panel connection)
 {

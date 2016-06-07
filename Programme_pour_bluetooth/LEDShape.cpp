@@ -4,9 +4,9 @@
  */
 
 #include "Arduino.h"
-#include "Shape.h"
+#include "LEDShape.h"
 
-Shape::Shape()
+LEDShape::LEDShape()
 {
   _red = 10;
   _green = 10;
@@ -23,14 +23,14 @@ Shape::Shape()
 }
 
 
-void Shape::setShapeColor(int r, int g, int b)
+void LEDShape::setShapeColor(int r, int g, int b)
 {
   _red = r;
   _green = g;
   _blue = b;
 }
 
-void Shape::setLocation(int row, int col)
+void LEDShape::setLocation(int row, int col)
 {
   _row = row;
   _col = col;

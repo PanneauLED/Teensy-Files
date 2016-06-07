@@ -1,7 +1,10 @@
 #ifndef LEDLETTER_H
 #define LEDLETTER_H
 
-class LEDLetter : public Shape {
+#include "LEDShape.h"
+
+class LEDLetter;
+class LEDLetter : public LEDShape {
   public:
       LEDLetter(CRGB ledPanel[6][256], Panel connection);
       void place(CRGB ledPanel[6][256], Panel connection);

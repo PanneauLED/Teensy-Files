@@ -1,8 +1,7 @@
 
-#include <LEDLetter.h>
+#include "LEDLetter.h"
 #include "Arduino.h"
 #include <FastLED.h>
-#include "Panel.h"
 
 // nb de ligne par groupe
 #define nbLine 4
