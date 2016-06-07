@@ -29,7 +29,7 @@
 
 // Bluetooth Connection:
 #include <SoftwareSerial.h>
-SoftwareSerial BLUETOOTH(0, 1); 
+SoftwareSerial BLUETOOTH(0, 1);
 // creates a "virtual" serial port/UART
 // connect BT module TX to D0
 // connect BT module RX to D1
@@ -207,7 +207,7 @@ void loop(){
    // if text arrived in from BT serial:
   if (BLUETOOTH.available()){
      // buffer=(BLUETOOTH.read());
-     buffer = (BLUETOOTH.readString());
+     //buffer = (BLUETOOTH.readString());
      letters = char[50];
      buffer.toCharArray(letters,50);
      for(int i = 0,i<=50,i++){

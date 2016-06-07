@@ -109,7 +109,12 @@
         document.getElementById("connectBTButton").onclick = function() {
             socketio.emit("connect_bluetooth");
         }
+        // If the panel is not connected via bluetooth
+        socketio.on('bluetooth_not_connected', function(){
+            alert("Not connected to panel");
+        });
 
+        // Sends hello to panel
         document.getElementById("helloButton").onclick = function() {
             socketio.emit("say_hello");
         }
@@ -117,15 +122,21 @@
         // Changes home team score:
         document.getElementById("homeSubmit").onclick = function() {
             document.getElementById("homeScore").innerHTML = document.getElementById("inputHomeScore").value;
-            var msg = document.getElementById("inputHomeScore").value;
-            socketio.emit("change_home_team_score", { message : msg});
+            var new_score = document.getElementById("inputHomeScore").value;
+            //var score_str = score.toString();
+            //var score_str = addZeroToScore(new_score);
+            socketio.emit("change_home_team_score", { score : new_score });
         }
+
         // Changes visitor team score:
         document.getElementById("visitorSubmit").onclick = function() {
             document.getElementById("visitorScore").innerHTML = document.getElementById("inputVisitorScore").value;
-            var msg = document.getElementById("inputVisitorScore").value;
-            socketio.emit("change_visitor_team_score", { message : msg});
+            var new_score = document.getElementById("inputVisitorScore").value;
+            //var score_str = score.toString();
+            //var score_str = addZeroToScore(new_score);
+            socketio.emit("change_visitor_team_score", { score : new_score });
         }
+
         // Changes time
         document.getElementById("timeSubmit").onclick = function() {
             document.getElementById("minutes").innerHTML = document.getElementById("inputMin").value;
@@ -142,16 +153,28 @@
             socketio.emit("update_time", { 
                 minutes : minString,
                 seconds : secString
-
             });
         }
         // Regulates start and stop of timer
         var startCheck = false;
         document.getElementById("startButton").onclick = function() {
             startCheck = true;
+            socketio.emit("begin_timer");
         }
         document.getElementById("stopButton").onclick = function() {
             startCheck = false;
+            socketio.emit("stop_timer");
+        }
+
+        function addZeroToScore(score){
+            if (score<10){
+                var string = "0"
+                string += score.toString();
+                return string;
+            }
+            else{
+                return score.toString();
+            }
         }
 
         // Changes "1:1" to "01:01" on the displayed time
