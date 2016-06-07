@@ -5,7 +5,6 @@
 
 // require dependencoes
 var express = require('express');
-var dispatcher = require('httpdispatcher');
 var path = require("path");
 var http = require("http")
 var port = 4000;

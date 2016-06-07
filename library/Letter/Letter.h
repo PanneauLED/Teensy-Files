@@ -1,6 +1,9 @@
 #ifndef LETTER_H
 #define LETTER_H
 
+#include "Arduino.h"
+#include <FastLED.h>
+#include "Panel.h"
 
 class Letter
 {

@@ -1,9 +1,39 @@
-#include <Letter.h>
+#include <LetterA.h>
+#include <LetterB.h>
+#include <LetterC.h>
+#include <LetterD.h>
+#include <LetterE.h>
+#include <LetterF.h>
+#include <LetterG.h>
+#include <LetterH.h>
+#include <LetterI.h>
+#include <LetterJ.h>
+#include <LetterK.h>
+#include <LetterL.h>
+#include <LetterM.h>
+#include <LetterN.h>
+#include <LetterO.h>
+#include <LetterP.h>
+#include <LetterQ.h>
+#include <LetterR.h>
+#include <LetterS.h>
+#include <LetterT.h>
+#include <LetterU.h>
+#include <LetterV.h>
+#include <LetterW.h>
+#include <LetterX.h>
+#include <LetterY.h>
+#include <LetterZ.h>
+#include <Shape.h>
+
+//#include <Letter.h>
+
+
 
 #include "Arduino.h"
 #include <FastLED.h>
-//#include "Panel.h"
-#include <FastLED.h>
+#include "Letter/Panel.h"
+//#include <FastLED.h>
 
 //#include "LetterA.h"
 // nb de ligne par groupe
@@ -186,28 +216,14 @@ void setup(){
     FastLED.addLeds<LPD8806, DATAPIN_5,CLOCKPIN_5>(leds[5], NUM_LEDS);
     //fading();
     ledPanel.allOff(leds);
-    LetterA _a(leds, ledPanel);
-    _a.place(leds, ledPanel);
-    
-    
-    
-//    leds[0][70].red=20;
-//    leds[0][70].green=20;
-//    leds[0][70].blue=20;
-//    FastLED.show();
+    LetterB _b(leds, ledPanel);
+    _b.place(leds, ledPanel);
   
 }
 
 
 String buffer; // stores incoming character from other device
 void loop(){
-  //loadImage();
-  //reinitialiser();
-  //ledPanel.ledOn(0, 0, leds);
-  
-  //fading();
-  //turnRED();
-  //turnOFF();
    // if text arrived in from BT serial:
   if (BLUETOOTH.available()){
      // buffer=(BLUETOOTH.read());
@@ -256,91 +272,11 @@ void loop(){
          Serial.println("as int:" + buffer.toInt());
          break;
      }
-//     for(int i = 0;i<=50;i++){
-//      if (letters[i]=='a'){
-//        fading();
-//        BLUETOOTH.println("fading");
-//      }
-//      if (letters[i]=='b'){
-//        turnRED();
-//        BLUETOOTH.println("turned red");
-//      }
-//      if (letters[i]=='c'){
-//        turnOFF();
-//        BLUETOOTH.println("turned off");
-//      }   
-//     }
-    // you can add more "if" statements with other characters to add more commands
   }
   
 }
 
 
-//String buffer; // stores incoming character from other device
-//void loop(){
-//  //loadImage();
-//  //reinitialiser();
-//  //ledPanel.ledOn(0, 0, leds);
-//  
-//  //fading();
-//  //turnRED();
-//  //turnOFF();
-//   // if text arrived in from BT serial:
-//  if (BLUETOOTH.available()){
-//     // buffer=(BLUETOOTH.read());
-//     buffer = (BLUETOOTH.readString());
-//     char letters[50];
-//     
-//     buffer.toCharArray(letters,50);
-//     for(int i = 0; i<=50; i++){
-//       Serial.println(buffer);
-//      if (letters[i]=='a'){
-//        fading();
-//        Serial.println("fading");
-//      }
-//      if (letters[i]=='b'){
-//        turnRED();
-//        Serial.println("turned red");
-//      }
-//      if (letters[i]=='c'){
-//        turnOFF();
-//        Serial.println("turned off");
-//      }   
-//     }
-//    // you can add more "if" statements with other characters to add more commands
-//  }
-//  
-//}
 
-//char buffer; // stores incoming character from other device
-//void loop(){
-//  //loadImage();
-//  //reinitialiser();
-//  //ledPanel.ledOn(0, 0, leds);
-//  
-//  //fading();
-//  //turnRED();
-//  //turnOFF();
-//   // if text arrived in from BT serial:
-//  if (BLUETOOTH.available()){
-//      buffer=(BLUETOOTH.read());
-//      if (buffer=='a'){
-//        fading();
-//        BLUETOOTH.println("fading");
-//      }
-//      if (buffer=='b'){
-//        turnRED();
-//        BLUETOOTH.println("turned red");
-//      }
-//      if (buffer=='c'){
-//        turnOFF();
-//        BLUETOOTH.println("turned off");
-//      }   
-//      if (buffer=='1'){
-//        Serial.println("1 received");
-//      }   
-//    // you can add more "if" statements with other characters to add more commands
-//  }
-//}
 
 
