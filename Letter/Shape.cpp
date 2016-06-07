@@ -18,7 +18,7 @@ Shape::Shape()
   for (int i=0; i<100; i++){
       _shapeArray[i][0] = -1;
       _shapeArray[i][1] = -1;
-   } 
+  } 
   
 }
 
