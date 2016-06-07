@@ -34,6 +34,17 @@ class LEDLetter : public LEDShape {
       void makeX();
       void makeY();
       void makeZ();
+
+      void make0();
+      void make1();
+      void make2();
+      void make3();
+      void make4();
+      void make5();
+      void make6();
+      void make7();
+      void make8();
+      void make9();
 };
 
 #endif
