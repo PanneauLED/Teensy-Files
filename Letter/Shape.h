@@ -3,9 +3,6 @@
   Created by Nick Anthony, March 1st, 2016.
 */
 
-#include "Arduino.h"
-#include "Panel.h"
-
 class Shape
 {
   public:
@@ -19,7 +16,7 @@ class Shape
     int _shapeArray[100][2];
     int _row;
     int _col;
-    
+
   private:
-    
+
 };
