@@ -123,6 +123,7 @@
 
         // If the panel is not connected via bluetooth
         socketio.on('bluetooth_not_connected', function(){
+            document.getElementById("connectionStatus").innerHTML = "Disconnected";
             alert("Not connected to panel");
         });
 
