@@ -35,6 +35,17 @@
                 <button id="helloButton" class="hvr-grow"> Say Hello </button>
             </td>
         </tr>
+        <tr>
+            <td style="position:relative; left: 40px">
+                Panel connection status (Bluetooth): 
+            </td>
+            <td>
+                <div id="connectionStatus" style="position:relative; left: -20px"> Disconnected </div>
+            </td>
+            <td>
+                
+            </td>
+        </tr>
     </table>
 
     <div id="control_panel">
@@ -109,9 +120,15 @@
         document.getElementById("connectBTButton").onclick = function() {
             socketio.emit("connect_bluetooth");
         }
+
         // If the panel is not connected via bluetooth
         socketio.on('bluetooth_not_connected', function(){
             alert("Not connected to panel");
+        });
+
+        // Panel is connected to bluetooth
+        socketio.on('bluetooth_connected', function(){
+            document.getElementById("connectionStatus").innerHTML = "Connected";
         });
 
         // Sends hello to panel

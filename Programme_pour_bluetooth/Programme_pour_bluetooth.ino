@@ -1,6 +1,6 @@
 //#include "Panel.h"
 #include "LetterA.h"
-//#include "LetterB.h"
+#include "LetterB.h"
 //#include <LetterC.h>
 //#include <LetterD.h>
 //#include <LetterE.h>

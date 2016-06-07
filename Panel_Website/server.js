@@ -171,6 +171,7 @@ function connectBluetooth(){
 		        serial.connect(address, channel, function() {
 		            console.log('Bluetooth connected to Panel!');
 		            serialConnected = true;
+		            socket_io.emit("bluetooth_connected");
 		            // process.stdin.resume();
 		            // process.stdin.setEncoding('utf8');
 		            //serialConnection = serial;
