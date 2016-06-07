@@ -1,8 +1,11 @@
+#include <Letter.h>
+
 #include "Arduino.h"
 #include <FastLED.h>
 //#include "Panel.h"
+#include <FastLED.h>
 
-#include "LetterA.h"
+//#include "LetterA.h"
 // nb de ligne par groupe
 #define nbLine 4
 // nb de led par ligne
@@ -238,11 +241,16 @@ void loop(){
          Serial.println("as int: " + buffer.toInt());
          break;
        case 'e': 
-         Serial.println("visitor score");
+         Serial.println("stop timer");
          Serial.println(buffer);
          Serial.println("as int:" + buffer.toInt());
          break;
        case 'b': 
+         Serial.println("begin timer");
+         Serial.println(buffer);
+         Serial.println("as int:" + buffer.toInt());
+         break;
+       case 'i': 
          Serial.println("visitor score");
          Serial.println(buffer);
          Serial.println("as int:" + buffer.toInt());
