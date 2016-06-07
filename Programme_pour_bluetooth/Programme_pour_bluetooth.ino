@@ -195,6 +195,7 @@ void setup(){
   
 }
 
+
 String buffer; // stores incoming character from other device
 void loop(){
   //loadImage();
@@ -207,29 +208,101 @@ void loop(){
    // if text arrived in from BT serial:
   if (BLUETOOTH.available()){
      // buffer=(BLUETOOTH.read());
+     char indicator = (BLUETOOTH.read()); //indicates the purpose of the following String
+//     int firstNumber = (BLUETOOTH.read());
+//     int secondNumber = (BLUETOOTH.read());
+//     Serial.println(indicator + ' ' + firstNumber + ' ' + secondNumber);
      buffer = (BLUETOOTH.readString());
-     char letters[50];
-     
+     char letters [50];
      buffer.toCharArray(letters,50);
-     for(int i = 0; i<=50; i++){
-       Serial.println(buffer);
-      if (letters[i]=='a'){
-        fading();
-        Serial.println("fading");
-      }
-      if (letters[i]=='b'){
-        turnRED();
-        Serial.println("turned red");
-      }
-      if (letters[i]=='c'){
-        turnOFF();
-        Serial.println("turned off");
-      }   
+     
+     switch(indicator) {
+       case 'h':
+         Serial.println("home score");
+         Serial.println(buffer);
+         Serial.println(buffer.toInt());
+         break;
+       case 'v': 
+         Serial.println("visitor score");
+         Serial.println(buffer);
+         Serial.println("as int:" + buffer.toInt());
+         break;
+       case 'm': 
+         Serial.println("minutes:");
+         Serial.println(buffer);
+         Serial.println("as int:" + buffer.toInt());
+         break;
+       case 's': 
+         Serial.println("seconds:");
+         Serial.println(buffer);
+         Serial.println("as int: " + buffer.toInt());
+         break;
+       case 'e': 
+         Serial.println("visitor score");
+         Serial.println(buffer);
+         Serial.println("as int:" + buffer.toInt());
+         break;
+       case 'b': 
+         Serial.println("visitor score");
+         Serial.println(buffer);
+         Serial.println("as int:" + buffer.toInt());
+         break;
      }
+//     for(int i = 0;i<=50;i++){
+//      if (letters[i]=='a'){
+//        fading();
+//        BLUETOOTH.println("fading");
+//      }
+//      if (letters[i]=='b'){
+//        turnRED();
+//        BLUETOOTH.println("turned red");
+//      }
+//      if (letters[i]=='c'){
+//        turnOFF();
+//        BLUETOOTH.println("turned off");
+//      }   
+//     }
     // you can add more "if" statements with other characters to add more commands
   }
   
 }
+
+
+//String buffer; // stores incoming character from other device
+//void loop(){
+//  //loadImage();
+//  //reinitialiser();
+//  //ledPanel.ledOn(0, 0, leds);
+//  
+//  //fading();
+//  //turnRED();
+//  //turnOFF();
+//   // if text arrived in from BT serial:
+//  if (BLUETOOTH.available()){
+//     // buffer=(BLUETOOTH.read());
+//     buffer = (BLUETOOTH.readString());
+//     char letters[50];
+//     
+//     buffer.toCharArray(letters,50);
+//     for(int i = 0; i<=50; i++){
+//       Serial.println(buffer);
+//      if (letters[i]=='a'){
+//        fading();
+//        Serial.println("fading");
+//      }
+//      if (letters[i]=='b'){
+//        turnRED();
+//        Serial.println("turned red");
+//      }
+//      if (letters[i]=='c'){
+//        turnOFF();
+//        Serial.println("turned off");
+//      }   
+//     }
+//    // you can add more "if" statements with other characters to add more commands
+//  }
+//  
+//}
 
 //char buffer; // stores incoming character from other device
 //void loop(){
