@@ -42,7 +42,7 @@ void Panel::ledOn(int x, int y, CRGB ledPanel[6][256]){
     group -= 1;
   }
   
-  this->allOff(ledPanel);
+  //this->allOff(ledPanel);
  
   _r = 20;
   _g = 20;
@@ -64,9 +64,9 @@ void Panel::allOff(CRGB ledPanel[6][256]){
   for(byte k=0;k<6;k++){
     for (int j=0; j<4;j++){
       for (int i =0;i<64;i++){
-        _ledPanel[k][j*nLEDs+i].red=r;
-        _ledPanel[k][j*nLEDs+i].green=g;
-        _ledPanel[k][j*nLEDs+i].blue=b;
+        ledPanel[k][j*nLEDs+i].red=r;
+        ledPanel[k][j*nLEDs+i].green=g;
+        ledPanel[k][j*nLEDs+i].blue=b;
       }
     } 
     FastLED.show();
@@ -74,20 +74,20 @@ void Panel::allOff(CRGB ledPanel[6][256]){
   return;
 }
 
-void Panel::allOn() {
-//  _r = 5;
-//  _g = 0;
-//  _b = 5;
-// 
-//  for(byte k=0;k<6;k++){
-//    for (int j=0; j<4;j++){
-//      for (int i =0;i<64;i++){
-//        leds[k][j*nLEDs+i].red=r;
-//        leds[k][j*nLEDs+i].green=g;
-//        leds[k][j*nLEDs+i].blue=b;
-//      }
-//    } 
-//    FastLED.show();
-//  }  
+void Panel::allOn(CRGB ledPanel[6][256]) {
+  int r = 5;
+  int g = 0;
+  int b = 5;
+  
+  for(byte k=0;k<6;k++){
+    for (int j=0; j<4;j++){
+      for (int i =0;i<64;i++){
+        ledPanel[k][j*nLEDs+i].red=r;
+        ledPanel[k][j*nLEDs+i].green=g;
+        ledPanel[k][j*nLEDs+i].blue=b;
+      }
+    } 
+    FastLED.show();
+  }  
   return;
 }

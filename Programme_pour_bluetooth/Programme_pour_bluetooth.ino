@@ -58,7 +58,32 @@ void reinitialiser(){
   
 }
 
+LEDLetter _h(leds, ledPanel);
+LEDLetter _o(leds, ledPanel);
+LEDLetter _m(leds, ledPanel);
+LEDLetter _e(leds, ledPanel);
 
+LEDLetter _t(leds, ledPanel);
+LEDLetter _i(leds, ledPanel);
+LEDLetter _m2(leds, ledPanel);
+LEDLetter _e2(leds, ledPanel);
+
+LEDLetter _v(leds, ledPanel);
+LEDLetter _i2(leds, ledPanel);
+LEDLetter _s(leds, ledPanel);
+LEDLetter _i3(leds, ledPanel);
+LEDLetter _o2(leds, ledPanel);
+LEDLetter _r(leds, ledPanel);
+
+LEDLetter _0(leds, ledPanel);
+LEDLetter _1(leds, ledPanel);
+LEDLetter _2(leds, ledPanel);
+LEDLetter _3(leds, ledPanel);
+
+LEDLetter _4(leds, ledPanel);
+LEDLetter _5(leds, ledPanel);
+LEDLetter _6(leds, ledPanel);
+LEDLetter _7(leds, ledPanel);
 
 void loadImage(){
    /* chaque groupe de trois octets représente 
@@ -183,10 +208,125 @@ void setup(){
     FastLED.addLeds<LPD8806, DATAPIN_5,CLOCKPIN_5>(leds[5], NUM_LEDS);
     //fading();
     ledPanel.allOff(leds);
-    //LetterA _a(leds, ledPanel);
-    //_a.place(leds, ledPanel);
-  
+    
+    LEDLetter _h(leds, ledPanel);
+    _h.makeH();
+    LEDLetter _o(leds, ledPanel);
+    _o.makeO();
+    LEDLetter _m(leds, ledPanel);
+    _m.makeM();
+    LEDLetter _e(leds, ledPanel);
+    _e.makeE();
+    
+    
+    LEDLetter _t(leds, ledPanel);
+    _t.makeT();
+    LEDLetter _i(leds, ledPanel);
+    _i.makeI();
+    LEDLetter _m2(leds, ledPanel);
+    _m2.makeM();
+    LEDLetter _e2(leds, ledPanel);
+    _e2.makeE();
+    
+    _t.setLocation(1, 1);
+    _i.setLocation(5, 1);
+    _m2.setLocation(10, 1);
+    _e2.setLocation(5, 1);
+    
+    _t.place(leds, ledPanel);
+    _i.place(leds, ledPanel);
+    _m2.place(leds, ledPanel);
+    _e2.place(leds, ledPanel);
+    
+    
+    
+    
+    
+    LEDLetter _v(leds, ledPanel);
+    _v.makeV();
+    LEDLetter _i2(leds, ledPanel);
+    _i2.makeI();
+    LEDLetter _s(leds, ledPanel);
+    _s.makeS();
+    LEDLetter _i3(leds, ledPanel);
+    _i3.makeI();
+    LEDLetter _o2(leds, ledPanel);
+    _o2.makeO();
+    LEDLetter _r(leds, ledPanel);
+    _r.makeR();
+    
+    LEDLetter _0(leds, ledPanel);
+    _0.make0();
+    LEDLetter _1(leds, ledPanel);
+    _1.make0();
+    LEDLetter _2(leds, ledPanel);
+    _2.make0();
+    LEDLetter _3(leds, ledPanel);
+    _3.make0();
+    
+    LEDLetter _4(leds, ledPanel);
+    _4.make0();
+    LEDLetter _5(leds, ledPanel);
+    _5.make0();
+    LEDLetter _6(leds, ledPanel);
+    _6.make0();
+    LEDLetter _7(leds, ledPanel);
+    _7.make0();
+    
+    
+    
+    
+    _4.setLocation(1, 30);
+    _5.setLocation(1, 35);
+    _6.setLocation(1, 40);
+    _7.setLocation(1, 45);
+    
+    _h.setLocation(20, 1);
+    _o.setLocation(20, 5);
+    _m.setLocation(20, 10);
+    _e.setLocation(20, 15);
+    _0.setLocation(40, 1);
+    _1.setLocation(40, 5);
+    
+    _v.setLocation(20, 30);
+    _i2.setLocation(20, 35);
+    _s.setLocation(20, 40);
+    _i3.setLocation(20, 45);
+    _o2.setLocation(20, 50);
+    _r.setLocation(20, 55);
+    
+    
+    _2.setLocation(40, 30);
+    _3.setLocation(40, 35);
+    
+    
+    
+    _h.place(leds, ledPanel);
+    _o.place(leds, ledPanel);
+    _m.place(leds, ledPanel);
+    _e.place(leds, ledPanel);
+    
+
+    
+    _v.place(leds, ledPanel);
+    _i2.place(leds, ledPanel);
+    _s.place(leds, ledPanel);
+    _i3.place(leds, ledPanel);
+    _o2.place(leds, ledPanel);
+    _r.place(leds, ledPanel);
+    
+    _0.place(leds, ledPanel);
+    _1.place(leds, ledPanel);
+    _2.place(leds, ledPanel);
+    _3.place(leds, ledPanel);
+    
+    _4.place(leds, ledPanel);
+    _5.place(leds, ledPanel);
+    _6.place(leds, ledPanel);
+    _7.place(leds, ledPanel);
 }
+
+
 
 
 String buffer; // stores incoming character from other device
@@ -204,16 +344,22 @@ void loop(){
      
      switch(indicator) {
        case 'h':
+         _h.makeH();
+          _h.place(leds, ledPanel);
          Serial.println("home score");
          Serial.println(buffer);
          Serial.println(buffer.toInt());
          break;
-       case 'v': 
+       case 'v':
+         _h.makeV();
+         _h.place(leds, ledPanel);
          Serial.println("visitor score");
          Serial.println(buffer);
          Serial.println("as int:" + buffer.toInt());
          break;
-       case 'm': 
+       case 'm':
+         _h.makeM();
+         _h.place(leds, ledPanel);
          Serial.println("minutes:");
          Serial.println(buffer);
          Serial.println("as int:" + buffer.toInt());
@@ -237,6 +383,14 @@ void loop(){
          Serial.println("visitor score");
          Serial.println(buffer);
          Serial.println("as int:" + buffer.toInt());
+         break;
+       case 'f': 
+         Serial.println("all off");
+         ledPanel.allOff(leds);
+         break;
+       case 'a': 
+         Serial.println("all on");
+         ledPanel.allOn(leds);
          break;
      }
   }

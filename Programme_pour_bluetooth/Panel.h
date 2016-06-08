@@ -19,7 +19,7 @@ class Panel {
     public:
         Panel();
         virtual ~Panel();
-        void allOn();
+        void allOn(CRGB ledPanel[6][256]);
         void allOff(CRGB ledPanel[6][256]);
         void ledOn(int x, int y, CRGB ledPanel[6][256]);
         void setPanel(CRGB ledPanel[6][256]);

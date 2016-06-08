@@ -35,6 +35,119 @@ LEDLetter::LEDLetter(CRGB ledPanel[6][256], Panel connection)
   _shapeArray[11][1] = 4;
 }
 
+void LEDLetter::change(char char_to_make){
+  switch(char_to_make){
+    case 'a':
+      this->makeA();
+      break;
+    case 'b':
+      this->makeB();
+      break;
+    case 'c':
+      this->makeC();
+      break;
+    case 'd':
+      this->makeD();
+      break;
+    case 'e':
+      this->makeE();
+      break;
+    case 'f':
+      this->makeF();
+      break;
+    case 'g':
+      this->makeG();
+      break;
+    case 'h':
+      this->makeH();
+      break;
+    case 'i':
+      this->makeI();
+      break;
+    case 'j':
+      this->makeJ();
+      break;
+    case 'k':
+      this->makeK();
+      break;  
+    case 'l':
+      this->makeL();
+      break;
+    case 'm':
+      this->makeM();
+      break;  
+    case 'n':
+      this->makeN();
+      break;
+    case 'o':
+      this->makeO();
+      break;
+    case 'p':
+      this->makeP();
+      break;
+    case 'q':
+      this->makeQ();
+      break;
+    case 'r':
+      this->makeR();
+      break;
+    case 's':
+      this->makeS();
+      break;
+    case 't':
+      this->makeT();
+      break;
+    case 'u':
+      this->makeU();
+      break;
+    case 'v':
+      this->makeV();
+      break;
+    case 'w':
+      this->makeW();
+      break;
+    case 'x':
+      this->makeX();
+      break;
+    case 'y':
+      this->makeY();
+      break;
+    case 'z':
+      this->makeZ();
+      break;
+    case '0':
+      this->make0();
+      break;
+    case '1':
+      this->make1();
+      break;
+    case '2':
+      this->make2();
+      break;
+    case '3':
+      this->make3();
+      break;
+    case '4': 
+      this->make4();
+      break;
+    case '5':
+      this->make5();
+      break;
+    case '6':
+      this->make6();
+      break;
+    case '7':
+      this->make7();
+      break;
+    case '8':
+      this->make8();
+      break;
+    case '9':
+      this->make9();
+      break;
+  }
+}
+
 void LEDLetter::place(CRGB ledPanel[6][256], Panel connection){
 
   // Turn on LED's
