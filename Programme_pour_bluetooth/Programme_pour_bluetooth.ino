@@ -51,10 +51,10 @@ int groupenum=0;
 unsigned long lastUpdateTime=millis();
 void reinitialiser(){
  
- if (millis()-lastUpdateTime>1000){
+  if (millis()-lastUpdateTime>1000){
    groupenum=0;
    i=0;
- }
+  }
   
 }
 
@@ -130,7 +130,7 @@ byte r,g ,b;
     if (state==384){state=0;}
   }
   
-  
+// turns the whole panel red
 void turnRED(){
     
     r = 10;
@@ -149,6 +149,7 @@ void turnRED(){
   }  
 }
 
+// turns off every LED on the panel
 void turnOFF(){
    
     r = 0;
@@ -195,8 +196,7 @@ void setup(){
     FastLED.addLeds<LPD8806, DATAPIN_5,CLOCKPIN_5>(leds[5], NUM_LEDS);
     //fading();
     
-    
-
+    // Initiate scoreboard:
     _scoreBoard.makeScoreBoard();
     _scoreBoard.place(leds, ledPanel);
         
@@ -215,7 +215,6 @@ void setup(){
     
     _s0.setLocation(51, 15);
     _s1.setLocation(57, 15);
-      
      
     _h0.setLocation(35, 0);
     _h1.setLocation(42, 0);
@@ -233,12 +232,10 @@ void setup(){
     
     _v0.place(leds, ledPanel);
     _v1.place(leds, ledPanel);
-    
-
 }
 
+// Creates and places scoreboard
 void setScoreBoard(){
-  //_scoreBoard.makeScoreBoard();
   _scoreBoard.place(leds, ledPanel);
   _m0.place(leds, ledPanel);
   _m1.place(leds, ledPanel);
@@ -252,16 +249,11 @@ void setScoreBoard(){
 
 
 
-
 String buffer; // stores incoming character from other device
 void loop(){
    // if text arrived in from BT serial:
   if (BLUETOOTH.available()){
-     // buffer=(BLUETOOTH.read());
      char indicator = (BLUETOOTH.read()); //indicates the purpose of the following String
-//     int firstNumber = (BLUETOOTH.read());
-//     int secondNumber = (BLUETOOTH.read());
-//     Serial.println(indicator + ' ' + firstNumber + ' ' + secondNumber);
      buffer = (BLUETOOTH.readString());
      char letters [50];
      buffer.toCharArray(letters,50);
