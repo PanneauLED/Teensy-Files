@@ -6,9 +6,10 @@
 class LEDLetter;
 class LEDLetter : public LEDShape {
   public:
-      LEDLetter(CRGB ledPanel[6][256], Panel connection);
+      LEDLetter();
       void place(CRGB ledPanel[6][256], Panel connection);
       void change(char char_to_make);
+      void makeScoreBoard();
       void makeA();
       void makeB();
       void makeC();

@@ -58,32 +58,7 @@ void reinitialiser(){
   
 }
 
-LEDLetter _h(leds, ledPanel);
-LEDLetter _o(leds, ledPanel);
-LEDLetter _m(leds, ledPanel);
-LEDLetter _e(leds, ledPanel);
 
-LEDLetter _t(leds, ledPanel);
-LEDLetter _i(leds, ledPanel);
-LEDLetter _m2(leds, ledPanel);
-LEDLetter _e2(leds, ledPanel);
-
-LEDLetter _v(leds, ledPanel);
-LEDLetter _i2(leds, ledPanel);
-LEDLetter _s(leds, ledPanel);
-LEDLetter _i3(leds, ledPanel);
-LEDLetter _o2(leds, ledPanel);
-LEDLetter _r(leds, ledPanel);
-
-LEDLetter _0(leds, ledPanel);
-LEDLetter _1(leds, ledPanel);
-LEDLetter _2(leds, ledPanel);
-LEDLetter _3(leds, ledPanel);
-
-LEDLetter _4(leds, ledPanel);
-LEDLetter _5(leds, ledPanel);
-LEDLetter _6(leds, ledPanel);
-LEDLetter _7(leds, ledPanel);
 
 void loadImage(){
    /* chaque groupe de trois octets représente 
@@ -193,6 +168,18 @@ void turnOFF(){
 }
 
 
+LEDLetter _m0;
+LEDLetter _m1;
+LEDLetter _s0;
+LEDLetter _s1;
+LEDLetter _v0;
+LEDLetter _v1;
+LEDLetter _h0;
+LEDLetter _h1;
+
+LEDLetter _scoreBoard;
+    
+
 void setup(){
   // on initialise la connexion serial
     Serial.begin(9600);
@@ -207,123 +194,60 @@ void setup(){
     FastLED.addLeds<LPD8806, DATAPIN_4,CLOCKPIN_4>(leds[4], NUM_LEDS);
     FastLED.addLeds<LPD8806, DATAPIN_5,CLOCKPIN_5>(leds[5], NUM_LEDS);
     //fading();
-    ledPanel.allOff(leds);
     
-    LEDLetter _h(leds, ledPanel);
-    _h.makeH();
-    LEDLetter _o(leds, ledPanel);
-    _o.makeO();
-    LEDLetter _m(leds, ledPanel);
-    _m.makeM();
-    LEDLetter _e(leds, ledPanel);
-    _e.makeE();
-    
-    
-    LEDLetter _t(leds, ledPanel);
-    _t.makeT();
-    LEDLetter _i(leds, ledPanel);
-    _i.makeI();
-    LEDLetter _m2(leds, ledPanel);
-    _m2.makeM();
-    LEDLetter _e2(leds, ledPanel);
-    _e2.makeE();
-    
-    _t.setLocation(1, 1);
-    _i.setLocation(5, 1);
-    _m2.setLocation(10, 1);
-    _e2.setLocation(5, 1);
-    
-    _t.place(leds, ledPanel);
-    _i.place(leds, ledPanel);
-    _m2.place(leds, ledPanel);
-    _e2.place(leds, ledPanel);
-    
-    
-    
-    
-    
-    LEDLetter _v(leds, ledPanel);
-    _v.makeV();
-    LEDLetter _i2(leds, ledPanel);
-    _i2.makeI();
-    LEDLetter _s(leds, ledPanel);
-    _s.makeS();
-    LEDLetter _i3(leds, ledPanel);
-    _i3.makeI();
-    LEDLetter _o2(leds, ledPanel);
-    _o2.makeO();
-    LEDLetter _r(leds, ledPanel);
-    _r.makeR();
-    
-    LEDLetter _0(leds, ledPanel);
-    _0.make0();
-    LEDLetter _1(leds, ledPanel);
-    _1.make0();
-    LEDLetter _2(leds, ledPanel);
-    _2.make0();
-    LEDLetter _3(leds, ledPanel);
-    _3.make0();
-    
-    LEDLetter _4(leds, ledPanel);
-    _4.make0();
-    LEDLetter _5(leds, ledPanel);
-    _5.make0();
-    LEDLetter _6(leds, ledPanel);
-    _6.make0();
-    LEDLetter _7(leds, ledPanel);
-    _7.make0();
-    
-    
-    
-    
-    _4.setLocation(1, 30);
-    _5.setLocation(1, 35);
-    _6.setLocation(1, 40);
-    _7.setLocation(1, 45);
-    
-    _h.setLocation(20, 1);
-    _o.setLocation(20, 5);
-    _m.setLocation(20, 10);
-    _e.setLocation(20, 15);
-    _0.setLocation(40, 1);
-    _1.setLocation(40, 5);
-    
-    _v.setLocation(20, 30);
-    _i2.setLocation(20, 35);
-    _s.setLocation(20, 40);
-    _i3.setLocation(20, 45);
-    _o2.setLocation(20, 50);
-    _r.setLocation(20, 55);
-    
-    
-    _2.setLocation(40, 30);
-    _3.setLocation(40, 35);
-    
-    
-    
-    _h.place(leds, ledPanel);
-    _o.place(leds, ledPanel);
-    _m.place(leds, ledPanel);
-    _e.place(leds, ledPanel);
     
 
+    _scoreBoard.makeScoreBoard();
+    _scoreBoard.place(leds, ledPanel);
+        
+    _m0.make0();
+    _m1.make0();
+    _s0.make0();
+    _s1.make0();
     
-    _v.place(leds, ledPanel);
-    _i2.place(leds, ledPanel);
-    _s.place(leds, ledPanel);
-    _i3.place(leds, ledPanel);
-    _o2.place(leds, ledPanel);
-    _r.place(leds, ledPanel);
+    _v0.make0();
+    _v1.make0();
+    _h0.make0();
+    _h1.make0();
     
-    _0.place(leds, ledPanel);
-    _1.place(leds, ledPanel);
-    _2.place(leds, ledPanel);
-    _3.place(leds, ledPanel);
+    _m0.setLocation(35, 15);
+    _m1.setLocation(41, 15);
     
-    _4.place(leds, ledPanel);
-    _5.place(leds, ledPanel);
-    _6.place(leds, ledPanel);
-    _7.place(leds, ledPanel);
+    _s0.setLocation(51, 15);
+    _s1.setLocation(57, 15);
+      
+     
+    _h0.setLocation(35, 0);
+    _h1.setLocation(42, 0);
+    
+    _v0.setLocation(51, 5);
+    _v1.setLocation(57, 5);
+    
+    _m0.place(leds, ledPanel);
+    _m1.place(leds, ledPanel);
+    _s0.place(leds, ledPanel);
+    _s1.place(leds, ledPanel);
+    
+    _h0.place(leds, ledPanel);
+    _h1.place(leds, ledPanel);
+    
+    _v0.place(leds, ledPanel);
+    _v1.place(leds, ledPanel);
+    
+
+}
+
+void setScoreBoard(){
+  //_scoreBoard.makeScoreBoard();
+  _scoreBoard.place(leds, ledPanel);
+  _m0.place(leds, ledPanel);
+  _m1.place(leds, ledPanel);
+  _s0.place(leds, ledPanel);
+  _s1.place(leds, ledPanel);
+  _h0.place(leds, ledPanel);
+  _h1.place(leds, ledPanel);
+  _v0.place(leds, ledPanel);
+  _v1.place(leds, ledPanel);
 }
 
 
@@ -344,30 +268,48 @@ void loop(){
      
      switch(indicator) {
        case 'h':
-         _h.makeH();
-          _h.place(leds, ledPanel);
-         Serial.println("home score");
-         Serial.println(buffer);
-         Serial.println(buffer.toInt());
+         Serial.println("home score changed");
+         ledPanel.allOff(leds);
+         _h0.change(buffer[0]);
+         _h1.change(buffer[1]);
+         _h0.setLocation(35, 0);
+          _h1.setLocation(42, 0);
+         _h0.place(leds, ledPanel);
+         _h1.place(leds, ledPanel);
+         setScoreBoard();
          break;
        case 'v':
-         _h.makeV();
-         _h.place(leds, ledPanel);
          Serial.println("visitor score");
-         Serial.println(buffer);
-         Serial.println("as int:" + buffer.toInt());
+         ledPanel.allOff(leds);
+         _v0.change(buffer[0]);
+         _v1.change(buffer[1]);
+         _v0.setLocation(51, 5);
+         _v1.setLocation(57, 5);
+         _v0.place(leds, ledPanel);
+         _v1.place(leds, ledPanel);
+         setScoreBoard();
          break;
        case 'm':
-         _h.makeM();
-         _h.place(leds, ledPanel);
          Serial.println("minutes:");
-         Serial.println(buffer);
-         Serial.println("as int:" + buffer.toInt());
+         ledPanel.allOff(leds);
+         _m0.change(buffer[0]);
+         _m1.change(buffer[1]);
+         _m0.setLocation(35, 15);
+         _m1.setLocation(41, 15);
+         _m0.place(leds, ledPanel);
+         _m1.place(leds, ledPanel);
+         setScoreBoard();
          break;
        case 's': 
          Serial.println("seconds:");
-         Serial.println(buffer);
-         Serial.println("as int: " + buffer.toInt());
+         ledPanel.allOff(leds);
+         _s0.change(buffer[0]);
+         _s1.change(buffer[1]);
+         _s0.setLocation(51, 15);
+         _s1.setLocation(57, 15);
+         _s0.place(leds, ledPanel);
+         _s1.place(leds, ledPanel);
+         setScoreBoard();
          break;
        case 'e': 
          Serial.println("stop timer");
@@ -393,6 +335,7 @@ void loop(){
          ledPanel.allOn(leds);
          break;
      }
+     delay(1000);
   }
   
 }

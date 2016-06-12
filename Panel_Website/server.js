@@ -20,6 +20,7 @@ var serial = new BTSP.BluetoothSerialPort();
 var serialConnected = false;
 
 
+// Routes:
 app.get('/',function(req,res){
   res.sendFile(path.join(__dirname+'/views/index.html'));
   //__dirname : It will resolve to your project folder.
@@ -129,9 +130,10 @@ socket_io.sockets.on('connection', function(socket){
 });
 
 function socketFailure(){
-	console.log('Socket was closed \n');
+	console.log('Connection failed and socket was closed \n');
 }
 
+// Sends message to the panel through the Bluetooth serial connection
 function sendMessageToPanel(message){
 	if (serialConnected){
 		var str = message.toString();
@@ -153,12 +155,10 @@ function sendMessageToPanel(message){
 }
 
 
-
+// Looks for the bluetooth module on the Panel and make bluetooth connection
 function connectBluetooth(){
 	var name = process.argv[2];
 	console.log("BlueTooth Program Started");
-
-	
 	 
 	serial.on('found', function(address, name) {
 		console.log("address1: ", address);
@@ -172,9 +172,11 @@ function connectBluetooth(){
 		            console.log('Bluetooth connected to Panel!');
 		            serialConnected = true;
 		            socket_io.emit("bluetooth_connected");
-		            // process.stdin.resume();
-		            // process.stdin.setEncoding('utf8');
-		            //serialConnection = serial;
+
+		            // ## UNCOMMENT THIS SECTION TO ALLOW FOR TERMINAL INPUTS ## //
+		      //       process.stdin.resume();
+		      //       process.stdin.setEncoding('utf8');
+		      //       serialConnection = serial;
 		 
 		      //       process.stdin.on('data', function (data) {
 		            	
@@ -190,6 +192,8 @@ function connectBluetooth(){
 			     //            if (err) console.log(err);
 			     //        });
 		      //       });
+
+		      		// ## ## //
 		 
 		            serial.on('data', function(data) {
 		                console.log('Received: ' + data);
@@ -204,9 +208,6 @@ function connectBluetooth(){
 	//Starts searching for bluetooth devices. When a device is found a 'found' event will be emitted
 	serial.inquire();
 }
-
-
-
 
 
 

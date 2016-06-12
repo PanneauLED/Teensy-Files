@@ -14,7 +14,7 @@ class LEDShape
     int _red;
     int _green;
     int _blue;
-    int _shapeArray[100][2];
+    int _shapeArray[200][2];
     int _row;
     int _col;
 
